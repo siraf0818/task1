@@ -4,6 +4,8 @@ import axios from "axios";
 import { API_URL, useAuth } from "../contexts/auth";
 
 interface Duser {
+  nama: string;
+  jabatan: string;
   jatah_cuti: string;
   sisa_cuti: string;
   izin: string;
@@ -31,14 +33,51 @@ const Presensi = ({ navigation }) => {
 
   return (
     <View style={styles.containerFlate}>
-      <TouchableHighlight onPress={() => navigation.navigate("Profile")}>
-        <Text>Profile</Text>
-      </TouchableHighlight>
-      <View style={{ flex: 4, backgroundColor: "white" }}>
-        <Text style={styles.datatext}>Jatah Cuti: {data?.jatah_cuti}</Text>
-        <Text style={styles.datatext}>Sisa Cuti: {data?.sisa_cuti}</Text>
-        <Text style={styles.datatext}>Izin: {data?.izin}</Text>
-        <Text style={styles.datatext}>Sakit: {data?.sakit}</Text>
+      <View style={{ flex: 2, flexDirection: "row" }}>
+        <View style={{ flex: 2 }}>
+          <View style={styles.datacard}>
+            <Text style={styles.datatext}>{data?.jabatan}</Text>
+          </View>
+        </View>
+        <View style={{ flex: 4 }}>
+          <View style={styles.datacard}>
+            <Text style={styles.datatext}>{data?.nama}</Text>
+            <Text style={styles.datatext}>{data?.jabatan}</Text>
+          </View>
+        </View>
+      </View>
+      <View style={{ flex: 8, flexDirection: "row" }}>
+        <View style={{ flex: 3, marginLeft: 20 }}>
+          <View style={styles.datacard}>
+            <Text style={styles.datatext}>Jatah Cuti</Text>
+            <Text style={styles.subdatatext}>{data?.jatah_cuti}</Text>
+          </View>
+          <View style={styles.datacard}>
+            <Text style={styles.datatext}>Sisa Cuti</Text>
+            <Text style={styles.subdatatext}>{data?.sisa_cuti}</Text>
+          </View>
+        </View>
+        <View style={{ flex: 3, marginRight: 20 }}>
+          <View style={styles.datacard}>
+            <Text style={styles.datatext}>Izin</Text>
+            <Text style={styles.subdatatext}>{data?.izin}</Text>
+          </View>
+          <View style={styles.datacard}>
+            <Text style={styles.datatext}>Sakit</Text>
+            <Text style={styles.subdatatext}>{data?.sakit}</Text>
+          </View>
+        </View>
+      </View>
+      <View style={{ flex: 1, flexDirection: "row", backgroundColor: "white" }}>
+        <TouchableHighlight
+          style={styles.menu}
+          onPress={() => navigation.navigate("Profile")}
+        >
+          <Text style={styles.menutext}>Profile</Text>
+        </TouchableHighlight>
+        <TouchableHighlight style={styles.menus}>
+          <Text style={styles.menutext}>Presensi</Text>
+        </TouchableHighlight>
       </View>
     </View>
   );
@@ -47,29 +86,53 @@ const Presensi = ({ navigation }) => {
 const styles = StyleSheet.create({
   containerFlate: {
     flex: 1,
-    backgroundColor: "#4caf50",
+    backgroundColor: "white",
   },
 
-  innerContainer: {
+  menu: {
     flex: 1,
-    borderRadius: 8,
+    backgroundColor: "#4caf50",
     justifyContent: "center",
     alignItems: "center",
   },
 
-  niptext: {
+  menus: {
+    flex: 1,
+    backgroundColor: "green",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  menutext: {
     color: "#fff",
-    fontSize: 37,
+    fontSize: 15,
   },
 
   datatext: {
-    color: "#4caf50",
-    fontSize: 17,
-    marginHorizontal: 5,
+    fontWeight: "bold",
     marginTop: 5,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "#4caf50",
+    marginHorizontal: 5,
+    fontSize: 16,
+    color: "#85868dff",
+  },
+
+  subdatatext: {
+    color: "#0b0b0cff",
+    fontWeight: "bold",
+    marginTop: 4,
+    marginBottom: 5,
+    marginHorizontal: 5,
+    fontSize: 17,
+  },
+
+  datacard: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f3f5f8ff",
+    marginHorizontal: 10,
+    marginTop: 20,
+    padding: 30,
+    borderRadius: 10,
   },
 
   title: {

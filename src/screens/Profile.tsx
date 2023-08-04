@@ -1,7 +1,13 @@
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableHighlight,
+  Image,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { API_URL, useAuth, Uname, Pass } from "../contexts/auth";
+import { API_URL, useAuth } from "../contexts/auth";
 
 interface Duser {
   id: string;
@@ -18,7 +24,6 @@ const Profile = ({ navigation }) => {
   const [data, setData] = useState<Duser | null>(null);
 
   useEffect(() => {
-    console.log(`${Uname}`);
     const getDuser = async () => {
       if (authState?.authState) {
         const token = authState.authState.token;
@@ -36,18 +41,67 @@ const Profile = ({ navigation }) => {
 
   return (
     <View style={styles.containerFlate}>
-      <TouchableHighlight onPress={() => navigation.navigate("Presensi")}>
-        <Text>Presensi</Text>
-      </TouchableHighlight>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text style={styles.niptext}>{data?.nip}</Text>
+      <View
+        style={{
+          flex: 3,
+          flexDirection: "row",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          marginHorizontal: 10,
+        }}
+      >
+        <View style={{ flex: 3 }}>
+          <View style={styles.imagecard}>
+            <Image
+              style={styles.logo}
+              source={require("../../assets/logo.png")}
+              resizeMode={"contain"}
+            />
+          </View>
+        </View>
+        <View style={{ flex: 3 }}>
+          <View style={styles.titlecard}>
+            <Text style={styles.datatext}>{data?.nama}</Text>
+            <Text style={styles.subdatatext}>{data?.jabatan}</Text>
+          </View>
+        </View>
       </View>
-      <View style={{ flex: 4, backgroundColor: "white" }}>
-        <Text style={styles.datatext}>Nama: {data?.nama}</Text>
-        <Text style={styles.datatext}>DoB: {data?.tanggal_lahir}</Text>
-        <Text style={styles.datatext}>Email: {data?.email}</Text>
-        <Text style={styles.datatext}>Telpon: {data?.telp}</Text>
-        <Text style={styles.datatext}>Jabatan: {data?.jabatan}</Text>
+
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "row",
+        }}
+      >
+        <TouchableHighlight style={styles.menu}>
+          <Text style={styles.menutext}>Profile</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.menus}
+          onPress={() => navigation.navigate("Presensi")}
+        >
+          <Text style={styles.menustext}>Presensi</Text>
+        </TouchableHighlight>
+      </View>
+      <View
+        style={{
+          flex: 6,
+          backgroundColor: "#4caf50",
+          justifyContent: "center",
+        }}
+      >
+        <View style={styles.datacard}>
+          <Text style={styles.datatext}>Email</Text>
+          <Text style={styles.subdatatext}>{data?.email}</Text>
+        </View>
+        <View style={styles.datacard}>
+          <Text style={styles.datatext}>Tanggal Lahir</Text>
+          <Text style={styles.subdatatext}>{data?.tanggal_lahir}</Text>
+        </View>
+        <View style={styles.datacard}>
+          <Text style={styles.datatext}>Telpon</Text>
+          <Text style={styles.subdatatext}>{data?.telp}</Text>
+        </View>
       </View>
     </View>
   );
@@ -56,35 +110,72 @@ const Profile = ({ navigation }) => {
 const styles = StyleSheet.create({
   containerFlate: {
     flex: 1,
-    backgroundColor: "#4caf50",
+    backgroundColor: "white",
   },
-
-  innerContainer: {
+  menu: {
     flex: 1,
-    borderRadius: 8,
+    backgroundColor: "#4caf50",
+    justifyContent: "center",
+    alignItems: "center",
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+  },
+  menus: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },
-
-  niptext: {
+  menutext: {
     color: "#fff",
-    fontSize: 37,
+    fontSize: 19,
   },
-
-  datatext: {
+  menustext: {
     color: "#4caf50",
-    fontSize: 17,
-    marginHorizontal: 5,
-    marginTop: 5,
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "#4caf50",
+    fontSize: 15,
   },
-
+  datatext: {
+    fontWeight: "bold",
+    marginTop: 5,
+    marginHorizontal: 5,
+    fontSize: 16,
+    color: "#85868dff",
+  },
+  subdatatext: {
+    color: "#0b0b0cff",
+    fontWeight: "bold",
+    marginTop: 4,
+    marginBottom: 5,
+    marginHorizontal: 5,
+    fontSize: 17,
+  },
+  datacard: {
+    backgroundColor: "#f3f5f8ff",
+    marginHorizontal: 30,
+    marginTop: 20,
+    padding: 10,
+    borderRadius: 10,
+  },
+  titlecard: {
+    marginTop: 10,
+    padding: 10,
+    borderRadius: 10,
+  },
+  imagecard: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f3f5f8ff",
+    marginTop: 10,
+    padding: 10,
+    borderRadius: 100,
+  },
   title: {
     fontWeight: "bold",
     fontSize: 18,
     color: "white",
+  },
+  logo: {
+    width: 100,
+    height: 100,
   },
 });
 

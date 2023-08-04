@@ -22,6 +22,8 @@ const Navigation = () => {
               name="User"
               component={AppNavigator}
               options={{
+                title: "Dashboard",
+                headerShadowVisible: false,
                 headerRight: () => (
                   <Button color="#4caf50" onPress={onLogout} title="Logout" />
                 ),

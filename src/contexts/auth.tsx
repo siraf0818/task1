@@ -9,8 +9,6 @@ interface AuthProps {
 }
 
 export const TOKEN_KEY = "tokken";
-export const Uname = "uname";
-export const Pass = "pass";
 export const API_URL = "https://optest.noretest.com/api";
 const AuthContext = createContext<AuthProps>({});
 
@@ -25,12 +23,6 @@ export const AuthProvider = ({ children }: any) => {
   }>({
     token: null,
     authenticated: null,
-  });
-
-  const [isLoading, setLoading] = useState<{
-    loading: boolean | null;
-  }>({
-    loading: false,
   });
 
   useEffect(() => {
@@ -62,9 +54,6 @@ export const AuthProvider = ({ children }: any) => {
           "Authorization"
         ] = `Bearer ${result.data.data.token}`;
         await SecureStore.setItemAsync(TOKEN_KEY, result.data.data.token);
-        const Uname = username;
-        await SecureStore.setItemAsync(Uname, username);
-        await SecureStore.setItemAsync(Pass, password);
         return result;
       } else {
         alert("Wrong Username or Password");
@@ -72,9 +61,7 @@ export const AuthProvider = ({ children }: any) => {
     } catch (e) {
       return { error: true, msg: (e as any).response.data.msg };
     } finally {
-      setLoading({
-        loading: false,
-      });
+      console.log("end");
     }
   };
 
@@ -83,8 +70,6 @@ export const AuthProvider = ({ children }: any) => {
       console.log(response.data.message);
     });
     await SecureStore.deleteItemAsync(TOKEN_KEY);
-    await SecureStore.deleteItemAsync(Uname);
-    await SecureStore.deleteItemAsync(Pass);
     axios.defaults.headers.common["Authorization"] = "";
     setAuthState({
       token: null,
