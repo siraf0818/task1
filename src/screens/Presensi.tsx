@@ -1,24 +1,19 @@
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { API_URL, useAuth, Uname, Pass } from "../contexts/auth";
+import { API_URL, useAuth } from "../contexts/auth";
 
 interface Duser {
-  id: string;
-  nip: string;
-  nama: string;
-  telp: string;
-  jabatan: string;
-  email: string;
-  tanggal_lahir: string;
+  jatah_cuti: string;
+  sisa_cuti: string;
+  izin: string;
+  sakit: string;
 }
 
-const Profile = ({ navigation }) => {
+const Presensi = ({ navigation }) => {
   const authState = useAuth();
   const [data, setData] = useState<Duser | null>(null);
-
   useEffect(() => {
-    console.log(`${Uname}`);
     const getDuser = async () => {
       if (authState?.authState) {
         const token = authState.authState.token;
@@ -36,18 +31,14 @@ const Profile = ({ navigation }) => {
 
   return (
     <View style={styles.containerFlate}>
-      <TouchableHighlight onPress={() => navigation.navigate("Presensi")}>
-        <Text>Presensi</Text>
+      <TouchableHighlight onPress={() => navigation.navigate("Profile")}>
+        <Text>Profile</Text>
       </TouchableHighlight>
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text style={styles.niptext}>{data?.nip}</Text>
-      </View>
       <View style={{ flex: 4, backgroundColor: "white" }}>
-        <Text style={styles.datatext}>Nama: {data?.nama}</Text>
-        <Text style={styles.datatext}>DoB: {data?.tanggal_lahir}</Text>
-        <Text style={styles.datatext}>Email: {data?.email}</Text>
-        <Text style={styles.datatext}>Telpon: {data?.telp}</Text>
-        <Text style={styles.datatext}>Jabatan: {data?.jabatan}</Text>
+        <Text style={styles.datatext}>Jatah Cuti: {data?.jatah_cuti}</Text>
+        <Text style={styles.datatext}>Sisa Cuti: {data?.sisa_cuti}</Text>
+        <Text style={styles.datatext}>Izin: {data?.izin}</Text>
+        <Text style={styles.datatext}>Sakit: {data?.sakit}</Text>
       </View>
     </View>
   );
@@ -88,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Profile;
+export default Presensi;

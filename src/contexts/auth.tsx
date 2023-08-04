@@ -6,24 +6,16 @@ interface AuthProps {
   authState?: { token: string | null; authenticated: boolean | null };
   onLogin?: (username: string, password: string) => Promise<any>;
   onLogout?: () => Promise<any>;
-  onLoading?: { loading: boolean };
-}
-
-interface LoadProps {
-  onLoading?: { loading: boolean };
 }
 
 export const TOKEN_KEY = "tokken";
+export const Uname = "uname";
+export const Pass = "pass";
 export const API_URL = "https://optest.noretest.com/api";
 const AuthContext = createContext<AuthProps>({});
-const LoadContext = createContext<LoadProps>({});
 
 export function useAuth() {
   return useContext(AuthContext);
-}
-
-export function useLoad() {
-  return useContext(LoadContext);
 }
 
 export const AuthProvider = ({ children }: any) => {
@@ -41,16 +33,19 @@ export const AuthProvider = ({ children }: any) => {
     loading: false,
   });
 
-  const loadToken = async () => {
-    const token = await SecureStore.getItemAsync(TOKEN_KEY);
-    if (token) {
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-      setAuthState({
-        token: token,
-        authenticated: true,
-      });
-    }
-  };
+  useEffect(() => {
+    const loadToken = async () => {
+      const token = await SecureStore.getItemAsync(TOKEN_KEY);
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+        setAuthState({
+          token: token,
+          authenticated: true,
+        });
+      }
+    };
+    loadToken();
+  }, []);
 
   const login = async (username: string, password: string) => {
     try {
@@ -67,6 +62,9 @@ export const AuthProvider = ({ children }: any) => {
           "Authorization"
         ] = `Bearer ${result.data.data.token}`;
         await SecureStore.setItemAsync(TOKEN_KEY, result.data.data.token);
+        const Uname = username;
+        await SecureStore.setItemAsync(Uname, username);
+        await SecureStore.setItemAsync(Pass, password);
         return result;
       } else {
         alert("Wrong Username or Password");
@@ -78,7 +76,6 @@ export const AuthProvider = ({ children }: any) => {
         loading: false,
       });
     }
-    loadToken();
   };
 
   const logout = async () => {
@@ -86,6 +83,8 @@ export const AuthProvider = ({ children }: any) => {
       console.log(response.data.message);
     });
     await SecureStore.deleteItemAsync(TOKEN_KEY);
+    await SecureStore.deleteItemAsync(Uname);
+    await SecureStore.deleteItemAsync(Pass);
     axios.defaults.headers.common["Authorization"] = "";
     setAuthState({
       token: null,
