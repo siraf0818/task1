@@ -80,9 +80,7 @@ export const AuthProvider = ({ children }: any) => {
         await SecureStore.setItemAsync(TOKEN_KEY, result.data.data.token);
         setData(result.data.data.user);
         console.log(data);
-        console.log(data?.WFH);
         const hadirs: string = String(data?.hadir);
-        console.log(hadirs);
         const wfhs: string = String(data?.WFH);
         await SecureStore.setItemAsync(AHADIR, hadirs);
         await SecureStore.setItemAsync(AWFH, wfhs);
@@ -105,6 +103,8 @@ export const AuthProvider = ({ children }: any) => {
         console.log(response.data.message);
       });
       await SecureStore.deleteItemAsync(TOKEN_KEY);
+      await SecureStore.deleteItemAsync(AHADIR);
+      await SecureStore.deleteItemAsync(AWFH);
       axios.defaults.headers.common["Authorization"] = "";
       setAuthState({
         token: null,
