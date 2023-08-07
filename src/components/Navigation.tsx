@@ -24,6 +24,13 @@ const Navigation = () => {
               options={{
                 title: "Dashboard",
                 headerShadowVisible: false,
+                headerStyle: {
+                  backgroundColor: "#4caf50",
+                },
+                headerTintColor: "#fff",
+                headerTitleStyle: {
+                  fontWeight: "bold",
+                },
                 headerRight: () => (
                   <Button color="#4caf50" onPress={onLogout} title="Logout" />
                 ),

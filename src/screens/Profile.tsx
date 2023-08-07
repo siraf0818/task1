@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableHighlight,
-  Image,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { API_URL, useAuth } from "../contexts/auth";
@@ -27,7 +21,7 @@ const Profile = ({ navigation }) => {
     const getDuser = async () => {
       if (authState?.authState) {
         const token = authState.authState.token;
-        axios
+        await axios
           .get(`${API_URL}/check-token?token=${token}`)
           .then((response) => {
             setData(response.data.data.user);
@@ -45,12 +39,20 @@ const Profile = ({ navigation }) => {
         style={{
           flex: 3,
           flexDirection: "row",
-          justifyContent: "flex-end",
           alignItems: "center",
-          marginHorizontal: 10,
+          justifyContent: "center",
+          marginHorizontal: 20,
+          marginTop: 10,
+          borderRadius: 25,
         }}
       >
-        <View style={{ flex: 3 }}>
+        <View
+          style={{
+            flex: 2,
+            alignItems: "flex-start",
+            justifyContent: "center",
+          }}
+        >
           <View style={styles.imagecard}>
             <Image
               style={styles.logo}
@@ -59,35 +61,42 @@ const Profile = ({ navigation }) => {
             />
           </View>
         </View>
-        <View style={{ flex: 3 }}>
+        <View style={{ flex: 4 }}>
           <View style={styles.titlecard}>
-            <Text style={styles.datatext}>{data?.nama}</Text>
-            <Text style={styles.subdatatext}>{data?.jabatan}</Text>
+            <Text style={styles.titletext}>{data?.nama}</Text>
+            <Text style={styles.subtitletext}>{data?.jabatan}</Text>
           </View>
         </View>
       </View>
-
       <View
         style={{
           flex: 1,
           flexDirection: "row",
+          alignItems: "flex-end",
+          marginHorizontal: 20,
+          marginTop: 10,
         }}
       >
-        <TouchableHighlight style={styles.menu}>
+        <TouchableOpacity style={styles.menu}>
           <Text style={styles.menutext}>Profile</Text>
-        </TouchableHighlight>
-        <TouchableHighlight
+        </TouchableOpacity>
+        <TouchableOpacity
           style={styles.menus}
           onPress={() => navigation.navigate("Presensi")}
         >
           <Text style={styles.menustext}>Presensi</Text>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
       <View
         style={{
           flex: 6,
-          backgroundColor: "#4caf50",
-          justifyContent: "center",
+          backgroundColor: "white",
+          justifyContent: "space-evenly",
+          marginHorizontal: 20,
+          marginBottom: 20,
+          borderTopRightRadius: 25,
+          borderBottomLeftRadius: 25,
+          borderBottomRightRadius: 25,
         }}
       >
         <View style={styles.datacard}>
@@ -110,28 +119,32 @@ const Profile = ({ navigation }) => {
 const styles = StyleSheet.create({
   containerFlate: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#4caf50",
   },
   menu: {
-    flex: 1,
-    backgroundColor: "#4caf50",
+    width: "50%",
+    height: 45,
+    backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    borderTopLeftRadius: 25,
+    borderTopRightRadius: 25,
   },
   menus: {
-    flex: 1,
+    width: "50%",
+    height: 45,
     justifyContent: "center",
     alignItems: "center",
   },
   menutext: {
-    color: "#fff",
-    fontSize: 19,
+    color: "#0f1e3dff",
+    fontWeight: "bold",
+    fontSize: 17,
   },
   menustext: {
-    color: "#4caf50",
-    fontSize: 15,
+    fontWeight: "bold",
+    color: "#fbfcfeff",
+    fontSize: 17,
   },
   datatext: {
     fontWeight: "bold",
@@ -141,41 +154,62 @@ const styles = StyleSheet.create({
     color: "#85868dff",
   },
   subdatatext: {
-    color: "#0b0b0cff",
+    color: "#3a455dff",
     fontWeight: "bold",
     marginTop: 4,
     marginBottom: 5,
     marginHorizontal: 5,
     fontSize: 17,
   },
-  datacard: {
-    backgroundColor: "#f3f5f8ff",
-    marginHorizontal: 30,
-    marginTop: 20,
-    padding: 10,
-    borderRadius: 10,
+  titletext: {
+    fontWeight: "bold",
+    marginTop: 6,
+    marginHorizontal: 10,
+    fontSize: 26,
+    color: "#3a455dff",
+  },
+  subtitletext: {
+    color: "#3a455dff",
+    fontWeight: "bold",
+    marginBottom: 6,
+    marginHorizontal: 10,
+    fontSize: 20,
+    opacity: 0.8,
   },
   titlecard: {
-    marginTop: 10,
+    justifyContent: "center",
+    alignItems: "flex-start",
+    backgroundColor: "#fbfcfeff",
+    padding: 10,
+    borderTopRightRadius: 25,
+    borderBottomRightRadius: 25,
+  },
+  datacard: {
+    backgroundColor: "#fbfcfeff",
+    marginHorizontal: 30,
     padding: 10,
     borderRadius: 10,
+    elevation: 1,
   },
   imagecard: {
-    justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f3f5f8ff",
-    marginTop: 10,
-    padding: 10,
+    width: 125,
+    height: 125,
+    backgroundColor: "white",
+    justifyContent: "center",
+    borderWidth: 2,
+    borderRadius: 20,
+    borderColor: "#fbfcfeff",
+  },
+  logo: {
+    width: "80%",
+    height: "80%",
     borderRadius: 100,
   },
   title: {
     fontWeight: "bold",
     fontSize: 18,
     color: "white",
-  },
-  logo: {
-    width: 100,
-    height: 100,
   },
 });
 
