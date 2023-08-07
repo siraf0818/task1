@@ -1,10 +1,12 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
+import Moment from "moment";
 import axios from "axios";
 import { API_URL, useAuth, getValPres } from "../contexts/auth";
 
 interface Duser {
   nama: string;
+  username: string;
   jabatan: string;
   jatah_cuti: string;
   sisa_cuti: string;
@@ -15,8 +17,17 @@ interface Duser {
 const Presensi = ({ navigation }) => {
   const authState = useAuth();
   const [data, setData] = useState<Duser | null>(null);
+  const [currentDate, setCurrentDate] = useState("");
+
   const [hadir, setHadir] = useState("");
   const [wfh, setWfh] = useState("");
+  const getPres = async () => {
+    const hadir = await getValPres("HADIR");
+    const wfh = await getValPres("WFH");
+    setHadir(String(hadir));
+    setWfh(String(wfh));
+  };
+  getPres();
   useEffect(() => {
     const getDuser = async () => {
       if (authState?.authState) {
@@ -31,17 +42,42 @@ const Presensi = ({ navigation }) => {
       }
     };
     getDuser();
-    const getPres = async () => {
-      const hadir = await getValPres("HADIR");
-      const wfh = await getValPres("WFH");
-      setHadir(String(hadir));
-      setWfh(String(wfh));
-    };
-    getPres();
+    var date = new Date().getDate(); //Current Date
+    var month = new Date().getMonth() + 1; //Current Month
+    var year = new Date().getFullYear(); //Current Year
+    setCurrentDate(year + "-" + month + "-" + date);
   }, []);
 
   return (
     <View style={styles.containerFlate}>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: "row",
+          alignItems: "center",
+          borderRadius: 17,
+          marginBottom: 20,
+          marginTop: 10,
+        }}
+      >
+        <View
+          style={{
+            flex: 5,
+            alignItems: "flex-start",
+          }}
+        >
+          <View
+            style={{
+              padding: 10,
+            }}
+          >
+            <Text style={styles.greetext}>Hello, {data?.username} :D</Text>
+          </View>
+          <Text style={styles.datetext}>
+            {Moment(currentDate).format("D MMM YYYY")}
+          </Text>
+        </View>
+      </View>
       <View
         style={{
           flex: 3,
@@ -186,6 +222,22 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginHorizontal: 5,
     fontSize: 17,
+  },
+  greetext: {
+    color: "white",
+    justifyContent: "center",
+    fontWeight: "bold",
+    marginLeft: 10,
+    marginRight: 30,
+    fontSize: 25,
+  },
+  datetext: {
+    justifyContent: "center",
+    fontWeight: "bold",
+    marginHorizontal: 20,
+    fontSize: 14,
+    color: "white",
+    opacity: 0.6,
   },
   titletext: {
     fontWeight: "bold",
