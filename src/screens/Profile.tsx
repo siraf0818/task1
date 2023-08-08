@@ -46,18 +46,12 @@ const Profile = ({ navigation }) => {
         style={{
           flex: 1,
           flexDirection: "row",
-          alignItems: "center",
+          alignItems: "flex-start",
           borderRadius: 17,
-          marginBottom: 20,
-          marginTop: 10,
+          marginBottom: 30,
         }}
       >
-        <View
-          style={{
-            flex: 5,
-            alignItems: "flex-start",
-          }}
-        >
+        <View>
           <View
             style={{
               padding: 10,
@@ -69,6 +63,7 @@ const Profile = ({ navigation }) => {
             {Moment(currentDate).format("D MMM YYYY")}
           </Text>
         </View>
+        <View></View>
       </View>
       <View
         style={{
@@ -217,7 +212,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginTop: 6,
     marginHorizontal: 10,
-    fontSize: 23,
+    fontSize: 26,
     color: "#3a455dff",
   },
   subtitletext: {
@@ -226,7 +221,7 @@ const styles = StyleSheet.create({
     marginTop: 6,
     marginBottom: 6,
     marginHorizontal: 10,
-    fontSize: 17,
+    fontSize: 20,
     opacity: 0.8,
   },
   titlecard: {
@@ -250,14 +245,12 @@ const styles = StyleSheet.create({
     height: 125,
     backgroundColor: "white",
     justifyContent: "center",
-    borderWidth: 4,
     borderRadius: 20,
-    borderColor: "white",
   },
   logo: {
     width: "80%",
     height: "80%",
-    borderRadius: 100,
+    borderRadius: 10,
   },
   title: {
     fontWeight: "bold",

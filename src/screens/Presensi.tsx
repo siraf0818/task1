@@ -63,12 +63,12 @@ const Presensi = ({ navigation }) => {
         <View
           style={{
             flex: 5,
-            alignItems: "flex-start",
           }}
         >
           <View
             style={{
               padding: 10,
+              alignItems: "flex-start",
             }}
           >
             <Text style={styles.greetext}>Hello, {data?.username} :D</Text>
@@ -147,30 +147,30 @@ const Presensi = ({ navigation }) => {
       >
         <View style={{ flex: 3, marginLeft: 10 }}>
           <View style={styles.datacard}>
+            <Text style={styles.subdatatext}>{data?.jatah_cuti} hari</Text>
             <Text style={styles.datatext}>Jatah Cuti</Text>
-            <Text style={styles.subdatatext}>{data?.jatah_cuti}</Text>
           </View>
           <View style={styles.datacard}>
+            <Text style={styles.subdatatext}>{data?.sisa_cuti} hari</Text>
             <Text style={styles.datatext}>Sisa Cuti</Text>
-            <Text style={styles.subdatatext}>{data?.sisa_cuti}</Text>
           </View>
           <View style={styles.datacard}>
+            <Text style={styles.subdatatext}>{wfh} hari</Text>
             <Text style={styles.datatext}>WFH</Text>
-            <Text style={styles.subdatatext}>{wfh}</Text>
           </View>
         </View>
         <View style={{ flex: 3, marginRight: 10 }}>
           <View style={styles.datacard}>
+            <Text style={styles.subdatatext}>{data?.izin} hari</Text>
             <Text style={styles.datatext}>Izin</Text>
-            <Text style={styles.subdatatext}>{data?.izin}</Text>
           </View>
           <View style={styles.datacard}>
+            <Text style={styles.subdatatext}>{data?.sakit} hari</Text>
             <Text style={styles.datatext}>Sakit</Text>
-            <Text style={styles.subdatatext}>{data?.sakit}</Text>
           </View>
           <View style={styles.datacard}>
+            <Text style={styles.subdatatext}>{hadir} hari</Text>
             <Text style={styles.datatext}>Hadir</Text>
-            <Text style={styles.subdatatext}>{hadir}</Text>
           </View>
         </View>
       </View>
@@ -210,9 +210,8 @@ const styles = StyleSheet.create({
   },
   datatext: {
     fontWeight: "bold",
-    marginTop: 5,
     marginHorizontal: 5,
-    fontSize: 16,
+    fontSize: 14,
     color: "#85868dff",
   },
   subdatatext: {
@@ -256,7 +255,7 @@ const styles = StyleSheet.create({
   },
   titlecard: {
     justifyContent: "center",
-    alignItems: "flex-start",
+    alignItems: "center",
     backgroundColor: "#fbfcfeff",
     padding: 10,
     borderTopRightRadius: 25,
@@ -264,7 +263,7 @@ const styles = StyleSheet.create({
   },
   datacard: {
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-start",
     backgroundColor: "#fbfcfeff",
     margin: 10,
     padding: 10,
@@ -284,7 +283,7 @@ const styles = StyleSheet.create({
   logo: {
     width: "80%",
     height: "80%",
-    borderRadius: 100,
+    borderRadius: 10,
   },
   title: {
     fontWeight: "bold",
