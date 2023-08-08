@@ -80,6 +80,7 @@ export const AuthProvider = ({ children }: any) => {
         await SecureStore.setItemAsync(TOKEN_KEY, result.data.data.token);
         setData(result.data.data.user);
         console.log(data);
+        console.log(data?.hadir);
         const hadirs: string = String(data?.hadir);
         const wfhs: string = String(data?.WFH);
         await SecureStore.setItemAsync(AHADIR, hadirs);
