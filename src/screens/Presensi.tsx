@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import Moment from "moment";
 import axios from "axios";
+
 import { API_URL, useAuth, getValPres } from "../contexts/auth";
 
 interface Duser {
@@ -14,20 +15,13 @@ interface Duser {
   sakit: string;
 }
 
-const Presensi = ({ navigation }) => {
+const Presensi = () => {
   const authState = useAuth();
   const [data, setData] = useState<Duser | null>(null);
   const [currentDate, setCurrentDate] = useState("");
 
   const [hadir, setHadir] = useState("");
   const [wfh, setWfh] = useState("");
-  const getPres = async () => {
-    const hadir = await getValPres("HADIR");
-    const wfh = await getValPres("WFH");
-    setHadir(String(hadir));
-    setWfh(String(wfh));
-  };
-  getPres();
   useEffect(() => {
     const getDuser = async () => {
       if (authState?.authState) {
@@ -42,6 +36,13 @@ const Presensi = ({ navigation }) => {
       }
     };
     getDuser();
+    const getPres = async () => {
+      const hadir = await getValPres("HADIR");
+      const wfh = await getValPres("WFH");
+      setHadir(String(hadir));
+      setWfh(String(wfh));
+    };
+    getPres();
     var date = new Date().getDate(); //Current Date
     var month = new Date().getMonth() + 1; //Current Month
     var year = new Date().getFullYear(); //Current Year
@@ -52,100 +53,36 @@ const Presensi = ({ navigation }) => {
     <View style={styles.containerFlate}>
       <View
         style={{
-          flex: 1,
-          flexDirection: "row",
-          alignItems: "center",
-          borderRadius: 17,
-          marginBottom: 20,
-          marginTop: 10,
-        }}
-      >
-        <View
-          style={{
-            flex: 5,
-          }}
-        >
-          <View
-            style={{
-              padding: 10,
-              alignItems: "flex-start",
-            }}
-          >
-            <Text style={styles.greetext}>Hello, {data?.username} :D</Text>
-          </View>
-          <Text style={styles.datetext}>
-            {Moment(currentDate).format("D MMM YYYY")}
-          </Text>
-        </View>
-      </View>
-      <View
-        style={{
           flex: 3,
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          marginHorizontal: 20,
-          marginTop: 10,
-          borderRadius: 25,
-        }}
-      >
-        <View
-          style={{
-            flex: 2,
-            alignItems: "flex-start",
-            justifyContent: "center",
-          }}
-        >
-          <View style={styles.imagecard}>
-            <Image
-              style={styles.logo}
-              source={require("../../assets/logo.png")}
-              resizeMode={"contain"}
-            />
-          </View>
-        </View>
-        <View style={{ flex: 4 }}>
-          <View style={styles.titlecard}>
-            <Text style={styles.titletext}>{data?.nama}</Text>
-            <Text style={styles.subtitletext}>{data?.jabatan}</Text>
-          </View>
-        </View>
-      </View>
-
-      <View
-        style={{
-          flex: 1,
-          flexDirection: "row",
-          alignItems: "flex-end",
-          marginHorizontal: 20,
+          alignItems: "flex-start",
+          marginLeft: 10,
           marginTop: 10,
         }}
       >
-        <TouchableOpacity
-          style={styles.menus}
-          onPress={() => navigation.navigate("Profile")}
-        >
-          <Text style={styles.menustext}>Profile</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.menu}>
-          <Text style={styles.menutext}>Presensi</Text>
-        </TouchableOpacity>
+        <Text style={styles.greetext}>
+          {Moment(currentDate).format("dddd")}
+        </Text>
+        <Text style={styles.greetexts}>
+          {Moment(currentDate).format("DD MMM YY")}
+        </Text>
+      </View>
+      <View style={{ marginVertical: 20, marginHorizontal: 20 }}>
+        <Text style={{ color: "white", fontSize: 20, fontWeight: "bold" }}>
+          Presensi Keseluruhan
+        </Text>
       </View>
       <View
         style={{
-          flex: 6,
+          flex: 5,
           backgroundColor: "white",
           justifyContent: "space-evenly",
           alignItems: "center",
           flexDirection: "row",
-          marginHorizontal: 20,
-          marginBottom: 20,
-          borderTopLeftRadius: 25,
-          borderBottomLeftRadius: 25,
-          borderBottomRightRadius: 25,
+          borderTopLeftRadius: 35,
+          borderTopRightRadius: 35,
         }}
       >
-        <View style={{ flex: 3, marginLeft: 10 }}>
+        <View style={{ flex: 3, marginLeft: 20 }}>
           <View style={styles.datacard}>
             <Text style={styles.subdatatext}>{data?.jatah_cuti} hari</Text>
             <Text style={styles.datatext}>Jatah Cuti</Text>
@@ -156,21 +93,21 @@ const Presensi = ({ navigation }) => {
           </View>
           <View style={styles.datacard}>
             <Text style={styles.subdatatext}>{wfh} hari</Text>
-            <Text style={styles.datatext}>WFH</Text>
+            <Text style={styles.datatext}>Total WFH</Text>
           </View>
         </View>
-        <View style={{ flex: 3, marginRight: 10 }}>
+        <View style={{ flex: 3, marginRight: 20 }}>
           <View style={styles.datacard}>
             <Text style={styles.subdatatext}>{data?.izin} hari</Text>
-            <Text style={styles.datatext}>Izin</Text>
+            <Text style={styles.datatext}>Total Izin</Text>
           </View>
           <View style={styles.datacard}>
             <Text style={styles.subdatatext}>{data?.sakit} hari</Text>
-            <Text style={styles.datatext}>Sakit</Text>
+            <Text style={styles.datatext}>Total Sakit</Text>
           </View>
           <View style={styles.datacard}>
             <Text style={styles.subdatatext}>{hadir} hari</Text>
-            <Text style={styles.datatext}>Hadir</Text>
+            <Text style={styles.datatext}>Total Hadir</Text>
           </View>
         </View>
       </View>
@@ -181,22 +118,15 @@ const Presensi = ({ navigation }) => {
 const styles = StyleSheet.create({
   containerFlate: {
     flex: 1,
-    backgroundColor: "#4caf50",
+    backgroundColor: "rgb(78, 219, 92)",
   },
   menu: {
-    width: "50%",
     height: 45,
     backgroundColor: "white",
     justifyContent: "center",
     alignItems: "center",
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-  },
-  menus: {
-    width: "50%",
-    height: 45,
-    justifyContent: "center",
-    alignItems: "center",
   },
   menutext: {
     color: "#0f1e3dff",
@@ -229,6 +159,14 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 30,
     fontSize: 25,
+  },
+  greetexts: {
+    color: "white",
+    justifyContent: "center",
+    fontWeight: "bold",
+    marginLeft: 10,
+    marginRight: 30,
+    fontSize: 70,
   },
   datetext: {
     justifyContent: "center",
@@ -267,7 +205,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fbfcfeff",
     margin: 10,
     padding: 10,
-    borderRadius: 10,
+    borderRadius: 20,
     elevation: 1,
   },
   imagecard: {

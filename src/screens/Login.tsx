@@ -1,6 +1,7 @@
 import {
   StyleSheet,
   Text,
+  ActivityIndicator,
   Image,
   TextInput,
   View,
@@ -12,7 +13,7 @@ import { useAuth } from "../contexts/auth";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin } = useAuth();
+  const { onLogin, isLoading } = useAuth();
 
   const login = async () => {
     const result = await onLogin!(username, password);
@@ -22,28 +23,36 @@ const Login = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.logo}
-        source={require("../../assets/logo.png")}
-        resizeMode={"contain"}
-      />
-      <TextInput
-        placeholder={"Username"}
-        style={styles.input}
-        value={username}
-        onChangeText={(text: string) => setUsername(text)}
-      />
-      <TextInput
-        placeholder={"Password"}
-        style={styles.input}
-        secureTextEntry={true}
-        value={password}
-        onChangeText={(text: string) => setPassword(text)}
-      />
-      <Pressable style={styles.lgnbutton} onPress={login}>
-        <Text style={styles.lgntext}>{"Login"}</Text>
-      </Pressable>
+    <View style={{ flex: 1 }}>
+      {isLoading ? (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" color="#00ff00" />
+        </View>
+      ) : (
+        <View style={styles.container}>
+          <Image
+            style={styles.logo}
+            source={require("../../assets/logo.png")}
+            resizeMode={"contain"}
+          />
+          <TextInput
+            placeholder={"Username"}
+            style={styles.input}
+            value={username}
+            onChangeText={(text: string) => setUsername(text)}
+          />
+          <TextInput
+            placeholder={"Password"}
+            style={styles.input}
+            secureTextEntry={true}
+            value={password}
+            onChangeText={(text: string) => setPassword(text)}
+          />
+          <Pressable style={styles.lgnbutton} onPress={login}>
+            <Text style={styles.lgntext}>{"Login"}</Text>
+          </Pressable>
+        </View>
+      )}
     </View>
   );
 };

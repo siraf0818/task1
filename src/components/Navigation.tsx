@@ -1,6 +1,7 @@
 import React from "react";
-import { Button } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import Icon from "react-native-vector-icons/FontAwesome";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "../screens/Login";
@@ -12,7 +13,7 @@ const Stack = createNativeStackNavigator();
 const SubStack = createNativeStackNavigator();
 
 const Navigation = () => {
-  const { authState, onLogout } = useAuth();
+  const { authState } = useAuth();
   return (
     <SafeAreaProvider>
       <NavigationContainer>
@@ -21,20 +22,7 @@ const Navigation = () => {
             <Stack.Screen
               name="User"
               component={AppNavigator}
-              options={{
-                title: "Dashboard",
-                headerShadowVisible: false,
-                headerStyle: {
-                  backgroundColor: "#4caf50",
-                },
-                headerTintColor: "#fff",
-                headerTitleStyle: {
-                  fontWeight: "bold",
-                },
-                headerRight: () => (
-                  <Button color="#4caf50" onPress={onLogout} title="Logout" />
-                ),
-              }}
+              options={{ headerShown: false }}
             />
           ) : (
             <Stack.Screen
@@ -50,10 +38,44 @@ const Navigation = () => {
 };
 
 const AppNavigator = () => {
+  const { onLogout } = useAuth();
+
   return (
-    <SubStack.Navigator screenOptions={{ headerShown: false }}>
-      <SubStack.Screen name="Profile" component={Profile} />
-      <SubStack.Screen name="Presensi" component={Presensi} />
+    <SubStack.Navigator>
+      <SubStack.Screen
+        name="Dashboard"
+        component={Profile}
+        options={{
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: "rgb(78, 219, 92)",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+          headerRight: () => (
+            <TouchableOpacity onPress={onLogout}>
+              <Icon name="sign-out" size={25} color="#fff" />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <SubStack.Screen
+        name="Presensi"
+        component={Presensi}
+        options={{
+          headerTitleAlign: "center",
+          headerShadowVisible: false,
+          headerStyle: {
+            backgroundColor: "rgb(78, 219, 92)",
+          },
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+        }}
+      />
     </SubStack.Navigator>
   );
 };

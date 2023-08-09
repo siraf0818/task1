@@ -1,12 +1,13 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
+import Icon from "react-native-vector-icons/FontAwesome";
 import axios from "axios";
 import Moment from "moment";
 import { API_URL, useAuth } from "../contexts/auth";
 
 interface Duser {
   id: string;
-  nip: string;
+  discord_id: string;
   username: string;
   nama: string;
   telp: string;
@@ -46,54 +47,30 @@ const Profile = ({ navigation }) => {
         style={{
           flex: 1,
           flexDirection: "row",
-          alignItems: "flex-start",
-          borderRadius: 17,
-          marginBottom: 30,
+          alignItems: "center",
+          marginHorizontal: 20,
+          marginTop: 20,
+          borderColor: "#fff",
         }}
       >
         <View>
-          <View
-            style={{
-              padding: 10,
-            }}
-          >
-            <Text style={styles.greetext}>Hello, {data?.username} :D</Text>
-          </View>
-          <Text style={styles.datetext}>
-            {Moment(currentDate).format("D MMM YYYY")}
-          </Text>
-        </View>
-        <View></View>
-      </View>
-      <View
-        style={{
-          flex: 3,
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          marginHorizontal: 20,
-          borderRadius: 25,
-        }}
-      >
-        <View style={{ flex: 4 }}>
-          <View style={styles.titlecard}>
-            <Text style={styles.titletext}>{data?.nama}</Text>
-            <Text style={styles.subtitletext}>{data?.jabatan}</Text>
-          </View>
-        </View>
-        <View
-          style={{
-            flex: 2,
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
           <View style={styles.imagecard}>
             <Image
               style={styles.logo}
               source={require("../../assets/logo.png")}
               resizeMode={"contain"}
             />
+          </View>
+        </View>
+        <View style={{ marginLeft: 10 }}>
+          <View style={{ alignItems: "flex-end" }}>
+            <Text style={styles.datetext}>
+              {Moment(currentDate).format("D MMM YYYY")}
+            </Text>
+          </View>
+          <View>
+            <Text style={styles.greetext}>Hello, {data?.nama}</Text>
+            <Text style={styles.subtitletext}>{data?.jabatan}</Text>
           </View>
         </View>
       </View>
@@ -103,12 +80,11 @@ const Profile = ({ navigation }) => {
           flexDirection: "row",
           alignItems: "flex-end",
           marginHorizontal: 20,
-          marginTop: 10,
         }}
       >
-        <TouchableOpacity style={styles.menu}>
-          <Text style={styles.menutext}>Profile</Text>
-        </TouchableOpacity>
+        <View style={styles.menu}>
+          <Text style={styles.menutext}>Info</Text>
+        </View>
         <TouchableOpacity
           style={styles.menus}
           onPress={() => navigation.navigate("Presensi")}
@@ -118,7 +94,7 @@ const Profile = ({ navigation }) => {
       </View>
       <View
         style={{
-          flex: 6,
+          flex: 4,
           backgroundColor: "white",
           justifyContent: "space-evenly",
           marginHorizontal: 20,
@@ -139,6 +115,10 @@ const Profile = ({ navigation }) => {
           </Text>
         </View>
         <View style={styles.datacard}>
+          <Text style={styles.datatext}>Discord ID</Text>
+          <Text style={styles.subdatatext}>{data?.discord_id}</Text>
+        </View>
+        <View style={styles.datacard}>
           <Text style={styles.datatext}>Telpon</Text>
           <Text style={styles.subdatatext}>{data?.telp}</Text>
         </View>
@@ -150,7 +130,7 @@ const Profile = ({ navigation }) => {
 const styles = StyleSheet.create({
   containerFlate: {
     flex: 1,
-    backgroundColor: "#4caf50",
+    backgroundColor: "rgb(78, 219, 92)",
   },
   menu: {
     width: "50%",
@@ -208,17 +188,9 @@ const styles = StyleSheet.create({
     color: "white",
     opacity: 0.6,
   },
-  titletext: {
-    fontWeight: "bold",
-    marginTop: 6,
-    marginHorizontal: 10,
-    fontSize: 26,
-    color: "#3a455dff",
-  },
   subtitletext: {
     color: "#3a455dff",
     fontWeight: "bold",
-    marginTop: 6,
     marginBottom: 6,
     marginHorizontal: 10,
     fontSize: 20,
@@ -234,15 +206,15 @@ const styles = StyleSheet.create({
   },
   datacard: {
     backgroundColor: "#fbfcfeff",
-    marginHorizontal: 30,
+    marginHorizontal: 15,
     padding: 10,
     borderRadius: 10,
     elevation: 1,
   },
   imagecard: {
     alignItems: "center",
-    width: 125,
-    height: 125,
+    width: 100,
+    height: 100,
     backgroundColor: "white",
     justifyContent: "center",
     borderRadius: 20,

@@ -98,8 +98,8 @@ export const AuthProvider = ({ children }: any) => {
   };
 
   const logout = async () => {
-    setLoading(true);
     try {
+      setLoading(true);
       axios.get(`${API_URL}/logout`).then((response) => {
         console.log(response.data.message);
       });
