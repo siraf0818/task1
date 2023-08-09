@@ -9,18 +9,6 @@ interface AuthProps {
   onLogout?: () => Promise<any>;
 }
 
-interface Duser {
-  id: string;
-  WFH: string;
-  hadir: string;
-  nip: string;
-  nama: string;
-  telp: string;
-  jabatan: string;
-  email: string;
-  tanggal_lahir: string;
-}
-
 const TOKEN_KEY = "tokken";
 const AHADIR = "HADIR";
 const AWFH = "WFH";
@@ -37,7 +25,6 @@ export async function getValPres(Pres: string) {
 }
 
 export const AuthProvider = ({ children }: any) => {
-  const [data, setData] = useState<Duser | null>(null);
   const [isLoading, setLoading] = useState(false);
 
   const [authState, setAuthState] = useState<{
@@ -78,11 +65,8 @@ export const AuthProvider = ({ children }: any) => {
           "Authorization"
         ] = `Bearer ${result.data.data.token}`;
         await SecureStore.setItemAsync(TOKEN_KEY, result.data.data.token);
-        setData(result.data.data.user);
-        console.log(data);
-        console.log(data?.hadir);
-        const hadirs: string = String(data?.hadir);
-        const wfhs: string = String(data?.WFH);
+        const hadirs: string = String(result.data.data.user.hadir);
+        const wfhs: string = String(result.data.data.user.WFH);
         await SecureStore.setItemAsync(AHADIR, hadirs);
         await SecureStore.setItemAsync(AWFH, wfhs);
         return result;
