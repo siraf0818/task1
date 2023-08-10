@@ -78,7 +78,7 @@ const Presensi = () => {
           padding: 3,
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#f0fdf4",
+          backgroundColor: "white",
         }}
       >
         <View
@@ -116,7 +116,7 @@ const Presensi = () => {
                     backgroundColor: "rgb(50, 191, 74)",
                   }}
                 >
-                  <Icon name="briefcase" size={27} color="#f0fdf4" />
+                  <Icon name="briefcase" size={27} color="white" />
                 </View>
               </View>
               <Text style={styles.datatext}>Total Hadir</Text>
@@ -135,12 +135,13 @@ const Presensi = () => {
                     flex: 1,
                     alignItems: "center",
                     justifyContent: "flex-start",
-                    padding: 5,
+                    paddingVertical: 7,
+                    paddingHorizontal: 10,
                     borderRadius: 10,
                     backgroundColor: "rgb(231, 209, 82)",
                   }}
                 >
-                  <Icon name="info" size={33} color="#f0fdf4" />
+                  <Icon name="info" size={30} color="white" />
                 </View>
               </View>
               <Text style={styles.datatext}>Total Izin</Text>
@@ -167,7 +168,7 @@ const Presensi = () => {
                     backgroundColor: "rgb(206, 73, 195)",
                   }}
                 >
-                  <Icon name="calendar-o" size={27} color="#f0fdf4" />
+                  <Icon name="calendar-o" size={27} color="white" />
                 </View>
               </View>
               <Text style={styles.datatext}>Jatah Cuti</Text>
@@ -194,7 +195,7 @@ const Presensi = () => {
                     backgroundColor: "rgb(74, 209, 194)",
                   }}
                 >
-                  <Icon name="home" size={30} color="#f0fdf4" />
+                  <Icon name="home" size={30} color="white" />
                 </View>
               </View>
               <Text style={styles.datatext}>Total WFH</Text>
@@ -219,7 +220,7 @@ const Presensi = () => {
                     backgroundColor: "rgb(207, 73, 73)",
                   }}
                 >
-                  <Icon name="plus-square" size={30} color="#f0fdf4" />
+                  <Icon name="plus-square" size={30} color="white" />
                 </View>
               </View>
               <Text style={styles.datatext}>Total Sakit</Text>
@@ -244,7 +245,7 @@ const Presensi = () => {
                     backgroundColor: "rgb(130, 78, 219)",
                   }}
                 >
-                  <Icon name="calendar" size={27} color="#f0fdf4" />
+                  <Icon name="calendar" size={27} color="white" />
                 </View>
               </View>
               <Text style={styles.datatext}>Sisa Cuti</Text>
@@ -262,7 +263,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(50, 191, 74)",
   },
   greetext: {
-    color: "#f0fdf4",
+    color: "white",
     justifyContent: "center",
     fontWeight: "bold",
     marginLeft: 10,
@@ -270,7 +271,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   greetexts: {
-    color: "#f0fdf4",
+    color: "white",
     justifyContent: "center",
     fontWeight: "bold",
     marginLeft: 10,
@@ -280,7 +281,7 @@ const styles = StyleSheet.create({
   datacard: {
     margin: 10,
     padding: 15,
-    backgroundColor: "#f0fdf4",
+    backgroundColor: "white",
     borderWidth: 1.5,
     borderColor: "rgb(245, 245, 245)",
     borderRadius: 20,

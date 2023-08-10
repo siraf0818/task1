@@ -105,7 +105,7 @@ const Profile = ({ navigation }) => {
               margin: 7,
             }}
           >
-            <Icon name="user" size={29} color="#f0fdf4" />
+            <Icon name="user" size={29} color="white" />
           </View>
           <View
             style={{
@@ -130,7 +130,7 @@ const Profile = ({ navigation }) => {
               margin: 7,
             }}
           >
-            <Icon name="envelope" size={27} color="#f0fdf4" />
+            <Icon name="envelope" size={27} color="white" />
           </View>
           <View
             style={{
@@ -155,7 +155,7 @@ const Profile = ({ navigation }) => {
               margin: 7,
             }}
           >
-            <Icon name="calendar" size={27} color="#f0fdf4" />
+            <Icon name="calendar" size={27} color="white" />
           </View>
           <View
             style={{
@@ -182,7 +182,7 @@ const Profile = ({ navigation }) => {
               margin: 7,
             }}
           >
-            <Icon name="phone" size={33} color="#f0fdf4" />
+            <Icon name="phone" size={33} color="white" />
           </View>
           <View
             style={{
@@ -211,7 +211,7 @@ const Profile = ({ navigation }) => {
 const styles = StyleSheet.create({
   containerFlate: {
     flex: 1,
-    backgroundColor: "#f0fdf4",
+    backgroundColor: "white",
   },
   menus: {
     marginHorizontal: 50,
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
   },
   menustext: {
     fontWeight: "bold",
-    color: "#f0fdf4",
+    color: "white",
     fontSize: 17,
   },
   datatext: {
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   greetext: {
-    color: "#f0fdf4",
+    color: "white",
     justifyContent: "center",
     fontWeight: "bold",
     marginLeft: 10,
@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginHorizontal: 20,
     fontSize: 14,
-    color: "#f0fdf4",
+    color: "white",
     opacity: 0.7,
   },
   subtitletext: {
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
   },
   datacard: {
     flexDirection: "row",
-    backgroundColor: "#f0fdf4",
+    backgroundColor: "white",
     borderWidth: 1.5,
     borderColor: "rgb(245, 245, 245)",
     marginHorizontal: 15,
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 100,
     height: 100,
-    backgroundColor: "#f0fdf4",
+    backgroundColor: "white",
     justifyContent: "center",
     borderRadius: 20,
   },
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 18,
-    color: "#f0fdf4",
+    color: "white",
   },
 });
 
