@@ -1,4 +1,11 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  LogBox,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import axios from "axios";
@@ -14,12 +21,13 @@ interface Duser {
   email: string;
   tanggal_lahir: string;
 }
-
+LogBox.ignoreAllLogs();
 const Profile = ({ navigation }) => {
   const authState = useAuth();
   const [data, setData] = useState<Duser | null>(null);
   const [currentDate, setCurrentDate] = useState("");
-
+  var idLocale = require("moment/locale/id");
+  Moment.locale("id", idLocale);
   useEffect(() => {
     const getDuser = async () => {
       if (authState?.authState) {
@@ -47,7 +55,7 @@ const Profile = ({ navigation }) => {
           flex: 1,
           flexDirection: "row",
           alignItems: "center",
-          backgroundColor: "rgb(78, 219, 92)",
+          backgroundColor: "rgb(51, 191, 74)",
           borderBottomLeftRadius: 30,
           paddingHorizontal: 20,
           paddingTop: 23,
@@ -66,7 +74,7 @@ const Profile = ({ navigation }) => {
         <View style={{ marginLeft: 10 }}>
           <View style={{ alignItems: "flex-end" }}>
             <Text style={styles.datetext}>
-              {Moment(currentDate).format("D MMM YYYY")}
+              {Moment(currentDate).format("D MMMM YYYY")}
             </Text>
           </View>
           <View>
@@ -92,7 +100,7 @@ const Profile = ({ navigation }) => {
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "rgb(78, 219, 92)",
+              backgroundColor: "rgb(219, 78, 78)",
               borderRadius: 10,
               margin: 7,
             }}
@@ -117,7 +125,7 @@ const Profile = ({ navigation }) => {
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "rgb(78, 219, 92)",
+              backgroundColor: "rgb(219, 78, 207)",
               borderRadius: 10,
               margin: 7,
             }}
@@ -142,7 +150,7 @@ const Profile = ({ navigation }) => {
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "rgb(78, 219, 92)",
+              backgroundColor: "rgb(250, 227, 90)",
               borderRadius: 10,
               margin: 7,
             }}
@@ -169,7 +177,7 @@ const Profile = ({ navigation }) => {
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "rgb(78, 219, 92)",
+              backgroundColor: "rgb(78, 219, 203)",
               borderRadius: 10,
               margin: 7,
             }}
@@ -210,7 +218,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingVertical: 20,
     borderRadius: 50,
-    backgroundColor: "rgb(78, 219, 92)",
+    backgroundColor: "rgb(50, 191, 74)",
     justifyContent: "center",
     alignItems: "center",
   },

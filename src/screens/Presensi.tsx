@@ -18,6 +18,8 @@ interface Duser {
 
 const Presensi = () => {
   const authState = useAuth();
+  var idLocale = require("moment/locale/id");
+  Moment.locale("id", idLocale);
   const [data, setData] = useState<Duser | null>(null);
   const [currentDate, setCurrentDate] = useState("");
 
@@ -135,7 +137,7 @@ const Presensi = () => {
                     justifyContent: "flex-start",
                     padding: 5,
                     borderRadius: 10,
-                    backgroundColor: "rgb(238, 225, 0)",
+                    backgroundColor: "rgb(250, 227, 90)",
                   }}
                 >
                   <Icon name="info" size={33} color="white" />
@@ -257,7 +259,7 @@ const Presensi = () => {
 const styles = StyleSheet.create({
   containerFlate: {
     flex: 1,
-    backgroundColor: "rgb(78, 219, 92)",
+    backgroundColor: "rgb(50, 191, 74)",
   },
   greetext: {
     color: "white",
@@ -265,7 +267,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginLeft: 10,
     marginRight: 30,
-    fontSize: 25,
+    fontSize: 30,
   },
   greetexts: {
     color: "white",
@@ -273,7 +275,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginLeft: 10,
     marginRight: 30,
-    fontSize: 70,
+    fontSize: 65,
   },
   datacard: {
     margin: 10,

@@ -17,7 +17,7 @@ const Navigation = () => {
   return (
     <SafeAreaProvider>
       <StatusBar
-        backgroundColor="rgb(78, 219, 92)"
+        backgroundColor="rgb(50, 191, 74)"
         barStyle={"light-content"}
       />
       <NavigationContainer>
@@ -52,7 +52,7 @@ const AppNavigator = () => {
         options={{
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: "rgb(78, 219, 92)",
+            backgroundColor: "rgb(50, 191, 74)",
           },
           headerTintColor: "#fff",
           headerTitleStyle: {
@@ -72,7 +72,7 @@ const AppNavigator = () => {
           headerTitleAlign: "center",
           headerShadowVisible: false,
           headerStyle: {
-            backgroundColor: "rgb(78, 219, 92)",
+            backgroundColor: "rgb(50, 191, 74)",
           },
           headerTintColor: "#fff",
           headerTitleStyle: {
