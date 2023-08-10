@@ -47,20 +47,20 @@ const AppNavigator = () => {
   return (
     <SubStack.Navigator>
       <SubStack.Screen
-        name="Dashboard"
+        name="Profile"
         component={Profile}
         options={{
           headerShadowVisible: false,
           headerStyle: {
             backgroundColor: "rgb(50, 191, 74)",
           },
-          headerTintColor: "#fff",
+          headerTintColor: "#f0fdf4",
           headerTitleStyle: {
             fontWeight: "bold",
           },
           headerRight: () => (
             <TouchableOpacity onPress={onLogout}>
-              <Icon name="sign-out" size={25} color="#fff" />
+              <Icon name="sign-out" size={25} color="#f0fdf4" />
             </TouchableOpacity>
           ),
         }}
@@ -74,7 +74,7 @@ const AppNavigator = () => {
           headerStyle: {
             backgroundColor: "rgb(50, 191, 74)",
           },
-          headerTintColor: "#fff",
+          headerTintColor: "#f0fdf4",
           headerTitleStyle: {
             fontWeight: "bold",
           },

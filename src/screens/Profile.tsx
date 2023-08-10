@@ -100,12 +100,12 @@ const Profile = ({ navigation }) => {
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "rgb(219, 78, 78)",
+              backgroundColor: "rgb(207, 73, 73)",
               borderRadius: 10,
               margin: 7,
             }}
           >
-            <Icon name="user" size={29} color="white" />
+            <Icon name="user" size={29} color="#f0fdf4" />
           </View>
           <View
             style={{
@@ -125,12 +125,12 @@ const Profile = ({ navigation }) => {
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "rgb(219, 78, 207)",
+              backgroundColor: "rgb(206, 73, 195)",
               borderRadius: 10,
               margin: 7,
             }}
           >
-            <Icon name="envelope" size={27} color="white" />
+            <Icon name="envelope" size={27} color="#f0fdf4" />
           </View>
           <View
             style={{
@@ -150,12 +150,12 @@ const Profile = ({ navigation }) => {
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "rgb(250, 227, 90)",
+              backgroundColor: "rgb(231, 209, 82)",
               borderRadius: 10,
               margin: 7,
             }}
           >
-            <Icon name="calendar" size={27} color="white" />
+            <Icon name="calendar" size={27} color="#f0fdf4" />
           </View>
           <View
             style={{
@@ -177,12 +177,12 @@ const Profile = ({ navigation }) => {
               flex: 1,
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "rgb(78, 219, 203)",
+              backgroundColor: "rgb(74, 209, 194)",
               borderRadius: 10,
               margin: 7,
             }}
           >
-            <Icon name="phone" size={33} color="white" />
+            <Icon name="phone" size={33} color="#f0fdf4" />
           </View>
           <View
             style={{
@@ -211,20 +211,20 @@ const Profile = ({ navigation }) => {
 const styles = StyleSheet.create({
   containerFlate: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#f0fdf4",
   },
   menus: {
     marginHorizontal: 50,
     marginBottom: 20,
     paddingVertical: 20,
     borderRadius: 50,
-    backgroundColor: "rgb(50, 191, 74)",
+    backgroundColor: "rgb(51, 191, 74)",
     justifyContent: "center",
     alignItems: "center",
   },
   menustext: {
     fontWeight: "bold",
-    color: "white",
+    color: "#f0fdf4",
     fontSize: 17,
   },
   datatext: {
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   greetext: {
-    color: "white",
+    color: "#f0fdf4",
     justifyContent: "center",
     fontWeight: "bold",
     marginLeft: 10,
@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginHorizontal: 20,
     fontSize: 14,
-    color: "white",
+    color: "#f0fdf4",
     opacity: 0.7,
   },
   subtitletext: {
@@ -267,7 +267,7 @@ const styles = StyleSheet.create({
   },
   datacard: {
     flexDirection: "row",
-    backgroundColor: "white",
+    backgroundColor: "#f0fdf4",
     borderWidth: 1.5,
     borderColor: "rgb(245, 245, 245)",
     marginHorizontal: 15,
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 100,
     height: 100,
-    backgroundColor: "white",
+    backgroundColor: "#f0fdf4",
     justifyContent: "center",
     borderRadius: 20,
   },
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 18,
-    color: "white",
+    color: "#f0fdf4",
   },
 });
 

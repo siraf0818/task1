@@ -26,7 +26,7 @@ const Login = () => {
     <View style={{ flex: 1 }}>
       {isLoading ? (
         <View style={styles.container}>
-          <ActivityIndicator size="large" color="white" />
+          <ActivityIndicator size="large" color="#f0fdf4" />
         </View>
       ) : (
         <View style={styles.container}>
@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderWidth: 1,
-    backgroundColor: "white",
-    color: "rgb(78, 219, 92)",
-    borderColor: "white",
+    backgroundColor: "#f0fdf4",
+    color: "rgb(50, 191, 74)",
+    borderColor: "#f0fdf4",
     marginBottom: 15,
   },
   lgnbutton: {
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     paddingVertical: 12,
     paddingHorizontal: 32,
-    backgroundColor: "white",
+    backgroundColor: "#f0fdf4",
   },
   lgntext: {
     color: "rgb(50, 191, 74)",
