@@ -26,13 +26,13 @@ const Login = () => {
     <View style={{ flex: 1 }}>
       {isLoading ? (
         <View style={styles.container}>
-          <ActivityIndicator size="large" color="#00ff00" />
+          <ActivityIndicator size="large" color="white" />
         </View>
       ) : (
         <View style={styles.container}>
           <Image
             style={styles.logo}
-            source={require("../../assets/logo.png")}
+            source={require("../../assets/logow.png")}
             resizeMode={"contain"}
           />
           <TextInput
@@ -62,34 +62,40 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "rgb(78, 219, 92)",
     alignItems: "center",
     justifyContent: "center",
   },
   input: {
-    width: "75%",
-    height: 44,
-    padding: 10,
+    width: "80%",
+    borderRadius: 10,
+    fontSize: 17,
+    height: 45,
+    paddingHorizontal: 20,
+    paddingVertical: 10,
     borderWidth: 1,
-    color: "#4caf50",
-    borderColor: "#4caf50",
+    backgroundColor: "white",
+    color: "rgb(78, 219, 92)",
+    borderColor: "white",
     marginBottom: 15,
   },
   lgnbutton: {
     width: "50%",
+    borderRadius: 50,
     alignItems: "center",
     justifyContent: "center",
     marginTop: 15,
     paddingVertical: 12,
     paddingHorizontal: 32,
-    elevation: 3,
-    backgroundColor: "#4caf50",
+    backgroundColor: "white",
   },
   lgntext: {
-    color: "#fff",
-    fontSize: 17,
+    color: "rgb(78, 219, 92)",
+    fontWeight: "bold",
+    fontSize: 21,
   },
   logo: {
-    width: 230,
+    width: 250,
     height: 230,
   },
 });

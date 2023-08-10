@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -16,6 +16,10 @@ const Navigation = () => {
   const { authState } = useAuth();
   return (
     <SafeAreaProvider>
+      <StatusBar
+        backgroundColor="rgb(78, 219, 92)"
+        barStyle={"light-content"}
+      />
       <NavigationContainer>
         <Stack.Navigator>
           {authState?.authenticated ? (
@@ -62,7 +66,7 @@ const AppNavigator = () => {
         }}
       />
       <SubStack.Screen
-        name="Presensi"
+        name="Presensi Keseluruhan"
         component={Presensi}
         options={{
           headerTitleAlign: "center",

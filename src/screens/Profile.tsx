@@ -7,7 +7,6 @@ import { API_URL, useAuth } from "../contexts/auth";
 
 interface Duser {
   id: string;
-  discord_id: string;
   username: string;
   nama: string;
   telp: string;
@@ -48,9 +47,11 @@ const Profile = ({ navigation }) => {
           flex: 1,
           flexDirection: "row",
           alignItems: "center",
-          marginHorizontal: 20,
-          marginTop: 20,
-          borderColor: "#fff",
+          backgroundColor: "rgb(78, 219, 92)",
+          borderBottomLeftRadius: 30,
+          paddingHorizontal: 20,
+          paddingTop: 23,
+          paddingBottom: 40,
         }}
       >
         <View>
@@ -76,53 +77,125 @@ const Profile = ({ navigation }) => {
       </View>
       <View
         style={{
-          flex: 1,
-          flexDirection: "row",
-          alignItems: "flex-end",
-          marginHorizontal: 20,
-        }}
-      >
-        <View style={styles.menu}>
-          <Text style={styles.menutext}>Info</Text>
-        </View>
-        <TouchableOpacity
-          style={styles.menus}
-          onPress={() => navigation.navigate("Presensi")}
-        >
-          <Text style={styles.menustext}>Presensi</Text>
-        </TouchableOpacity>
-      </View>
-      <View
-        style={{
-          flex: 4,
-          backgroundColor: "white",
+          flex: 5,
           justifyContent: "space-evenly",
-          marginHorizontal: 20,
-          marginBottom: 20,
+          marginHorizontal: 10,
           borderTopRightRadius: 25,
+          borderTopLeftRadius: 25,
           borderBottomLeftRadius: 25,
           borderBottomRightRadius: 25,
         }}
       >
         <View style={styles.datacard}>
-          <Text style={styles.datatext}>Email</Text>
-          <Text style={styles.subdatatext}>{data?.email}</Text>
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "rgb(78, 219, 92)",
+              borderRadius: 10,
+              margin: 7,
+            }}
+          >
+            <Icon name="user" size={29} color="white" />
+          </View>
+          <View
+            style={{
+              flex: 4,
+              marginHorizontal: 5,
+              alignItems: "flex-start",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={styles.datatext}>Username</Text>
+            <Text style={styles.subdatatext}>{data?.username}</Text>
+          </View>
         </View>
         <View style={styles.datacard}>
-          <Text style={styles.datatext}>Tanggal Lahir</Text>
-          <Text style={styles.subdatatext}>
-            {Moment(data?.tanggal_lahir).format("D MMM YYYY")}
-          </Text>
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "rgb(78, 219, 92)",
+              borderRadius: 10,
+              margin: 7,
+            }}
+          >
+            <Icon name="envelope" size={27} color="white" />
+          </View>
+          <View
+            style={{
+              flex: 4,
+              marginHorizontal: 5,
+              alignItems: "flex-start",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={styles.datatext}>Email</Text>
+            <Text style={styles.subdatatext}>{data?.email}</Text>
+          </View>
         </View>
         <View style={styles.datacard}>
-          <Text style={styles.datatext}>Discord ID</Text>
-          <Text style={styles.subdatatext}>{data?.discord_id}</Text>
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "rgb(78, 219, 92)",
+              borderRadius: 10,
+              margin: 7,
+            }}
+          >
+            <Icon name="calendar" size={27} color="white" />
+          </View>
+          <View
+            style={{
+              flex: 4,
+              marginHorizontal: 5,
+              alignItems: "flex-start",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={styles.datatext}>Tanggal Lahir</Text>
+            <Text style={styles.subdatatext}>
+              {Moment(data?.tanggal_lahir).format("D MMM YYYY")}
+            </Text>
+          </View>
         </View>
         <View style={styles.datacard}>
-          <Text style={styles.datatext}>Telpon</Text>
-          <Text style={styles.subdatatext}>{data?.telp}</Text>
+          <View
+            style={{
+              flex: 1,
+              alignItems: "center",
+              justifyContent: "center",
+              backgroundColor: "rgb(78, 219, 92)",
+              borderRadius: 10,
+              margin: 7,
+            }}
+          >
+            <Icon name="phone" size={33} color="white" />
+          </View>
+          <View
+            style={{
+              flex: 4,
+              marginHorizontal: 5,
+              alignItems: "flex-start",
+              justifyContent: "center",
+            }}
+          >
+            <Text style={styles.datatext}>Telpon</Text>
+            <Text style={styles.subdatatext}>{data?.telp}</Text>
+          </View>
         </View>
       </View>
+
+      <TouchableOpacity
+        style={styles.menus}
+        onPress={() => navigation.navigate("Presensi Keseluruhan")}
+      >
+        <Text style={styles.menustext}>Check Presensi Keseluruhan</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -130,45 +203,33 @@ const Profile = ({ navigation }) => {
 const styles = StyleSheet.create({
   containerFlate: {
     flex: 1,
-    backgroundColor: "rgb(78, 219, 92)",
-  },
-  menu: {
-    width: "50%",
-    height: 45,
     backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
   },
   menus: {
-    width: "50%",
-    height: 45,
+    marginHorizontal: 50,
+    marginBottom: 20,
+    paddingVertical: 20,
+    borderRadius: 50,
+    backgroundColor: "rgb(78, 219, 92)",
     justifyContent: "center",
     alignItems: "center",
-  },
-  menutext: {
-    color: "#0f1e3dff",
-    fontWeight: "bold",
-    fontSize: 17,
   },
   menustext: {
     fontWeight: "bold",
-    color: "#fbfcfeff",
+    color: "white",
     fontSize: 17,
   },
   datatext: {
     fontWeight: "bold",
-    marginTop: 5,
+    marginTop: 10,
     marginHorizontal: 5,
-    fontSize: 16,
+    fontSize: 15,
     color: "#85868dff",
   },
   subdatatext: {
     color: "#3a455dff",
     fontWeight: "bold",
-    marginTop: 4,
-    marginBottom: 5,
+    marginBottom: 10,
     marginHorizontal: 5,
     fontSize: 17,
   },
@@ -186,7 +247,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     fontSize: 14,
     color: "white",
-    opacity: 0.6,
+    opacity: 0.7,
   },
   subtitletext: {
     color: "#3a455dff",
@@ -194,22 +255,15 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     marginHorizontal: 10,
     fontSize: 20,
-    opacity: 0.8,
-  },
-  titlecard: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fbfcfeff",
-    padding: 10,
-    borderTopLeftRadius: 25,
-    borderBottomLeftRadius: 25,
+    opacity: 0.7,
   },
   datacard: {
-    backgroundColor: "#fbfcfeff",
+    flexDirection: "row",
+    backgroundColor: "white",
+    borderWidth: 1.5,
+    borderColor: "rgb(245, 245, 245)",
     marginHorizontal: 15,
-    padding: 10,
     borderRadius: 10,
-    elevation: 1,
   },
   imagecard: {
     alignItems: "center",

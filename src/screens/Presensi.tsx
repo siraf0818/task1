@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
+import Icon from "react-native-vector-icons/FontAwesome";
 import Moment from "moment";
 import axios from "axios";
 
@@ -53,10 +54,11 @@ const Presensi = () => {
     <View style={styles.containerFlate}>
       <View
         style={{
-          flex: 3,
+          flex: 1,
           alignItems: "flex-start",
           marginLeft: 10,
           marginTop: 10,
+          paddingBottom: 50,
         }}
       >
         <Text style={styles.greetext}>
@@ -66,48 +68,185 @@ const Presensi = () => {
           {Moment(currentDate).format("DD MMM YY")}
         </Text>
       </View>
-      <View style={{ marginVertical: 20, marginHorizontal: 20 }}>
-        <Text style={{ color: "white", fontSize: 20, fontWeight: "bold" }}>
-          Presensi Keseluruhan
-        </Text>
-      </View>
       <View
         style={{
-          flex: 5,
-          backgroundColor: "white",
-          justifyContent: "space-evenly",
+          flex: 4,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          padding: 3,
+          justifyContent: "center",
           alignItems: "center",
-          flexDirection: "row",
-          borderTopLeftRadius: 35,
-          borderTopRightRadius: 35,
+          backgroundColor: "white",
         }}
       >
-        <View style={{ flex: 3, marginLeft: 20 }}>
-          <View style={styles.datacard}>
-            <Text style={styles.subdatatext}>{data?.jatah_cuti} hari</Text>
-            <Text style={styles.datatext}>Jatah Cuti</Text>
+        <View
+          style={{
+            flex: 5,
+            margin: 10,
+            flexDirection: "row",
+            borderRadius: 20,
+            alignItems: "center",
+          }}
+        >
+          <View
+            style={{
+              flex: 3,
+              marginVertical: 10,
+              marginLeft: 5,
+            }}
+          >
+            <View style={styles.datacard}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <View style={{ flex: 3, justifyContent: "flex-end" }}>
+                  <Text style={styles.subdatatext}>{hadir} hari</Text>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    padding: 9,
+                    borderRadius: 10,
+                    backgroundColor: "rgb(78, 219, 92)",
+                  }}
+                >
+                  <Icon name="briefcase" size={27} color="white" />
+                </View>
+              </View>
+              <Text style={styles.datatext}>Total Hadir</Text>
+            </View>
+            <View style={styles.datacard}>
+              <View
+                style={{
+                  flexDirection: "row",
+                }}
+              >
+                <View style={{ flex: 3, justifyContent: "flex-end" }}>
+                  <Text style={styles.subdatatext}>{data?.izin} hari</Text>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    padding: 5,
+                    borderRadius: 10,
+                    backgroundColor: "rgb(238, 225, 0)",
+                  }}
+                >
+                  <Icon name="info" size={33} color="white" />
+                </View>
+              </View>
+              <Text style={styles.datatext}>Total Izin</Text>
+            </View>
+            <View style={styles.datacard}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <View style={{ flex: 3, justifyContent: "flex-end" }}>
+                  <Text style={styles.subdatatext}>
+                    {data?.jatah_cuti} hari
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    padding: 9,
+                    borderRadius: 10,
+                    backgroundColor: "rgb(219, 78, 207)",
+                  }}
+                >
+                  <Icon name="calendar-o" size={27} color="white" />
+                </View>
+              </View>
+              <Text style={styles.datatext}>Jatah Cuti</Text>
+            </View>
           </View>
-          <View style={styles.datacard}>
-            <Text style={styles.subdatatext}>{data?.sisa_cuti} hari</Text>
-            <Text style={styles.datatext}>Sisa Cuti</Text>
-          </View>
-          <View style={styles.datacard}>
-            <Text style={styles.subdatatext}>{wfh} hari</Text>
-            <Text style={styles.datatext}>Total WFH</Text>
-          </View>
-        </View>
-        <View style={{ flex: 3, marginRight: 20 }}>
-          <View style={styles.datacard}>
-            <Text style={styles.subdatatext}>{data?.izin} hari</Text>
-            <Text style={styles.datatext}>Total Izin</Text>
-          </View>
-          <View style={styles.datacard}>
-            <Text style={styles.subdatatext}>{data?.sakit} hari</Text>
-            <Text style={styles.datatext}>Total Sakit</Text>
-          </View>
-          <View style={styles.datacard}>
-            <Text style={styles.subdatatext}>{hadir} hari</Text>
-            <Text style={styles.datatext}>Total Hadir</Text>
+          <View style={{ flex: 3, marginVertical: 10, marginRight: 5 }}>
+            <View style={styles.datacard}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <View style={{ flex: 3, justifyContent: "flex-end" }}>
+                  <Text style={styles.subdatatext}>{wfh} hari</Text>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    padding: 7,
+                    borderRadius: 10,
+                    backgroundColor: "rgb(78, 219, 203)",
+                  }}
+                >
+                  <Icon name="home" size={30} color="white" />
+                </View>
+              </View>
+              <Text style={styles.datatext}>Total WFH</Text>
+            </View>
+            <View style={styles.datacard}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <View style={{ flex: 3, justifyContent: "flex-end" }}>
+                  <Text style={styles.subdatatext}>{data?.sakit} hari</Text>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    padding: 7,
+                    borderRadius: 10,
+                    backgroundColor: "rgb(219, 78, 78)",
+                  }}
+                >
+                  <Icon name="plus-square" size={30} color="white" />
+                </View>
+              </View>
+              <Text style={styles.datatext}>Total Sakit</Text>
+            </View>
+            <View style={styles.datacard}>
+              <View
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                }}
+              >
+                <View style={{ flex: 3, justifyContent: "flex-end" }}>
+                  <Text style={styles.subdatatext}>{data?.sisa_cuti} hari</Text>
+                </View>
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "flex-start",
+                    padding: 9,
+                    borderRadius: 10,
+                    backgroundColor: "rgb(130, 78, 219)",
+                  }}
+                >
+                  <Icon name="calendar" size={27} color="white" />
+                </View>
+              </View>
+              <Text style={styles.datatext}>Sisa Cuti</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -119,38 +258,6 @@ const styles = StyleSheet.create({
   containerFlate: {
     flex: 1,
     backgroundColor: "rgb(78, 219, 92)",
-  },
-  menu: {
-    height: 45,
-    backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-  },
-  menutext: {
-    color: "#0f1e3dff",
-    fontWeight: "bold",
-    fontSize: 17,
-  },
-  menustext: {
-    fontWeight: "bold",
-    color: "#fbfcfeff",
-    fontSize: 17,
-  },
-  datatext: {
-    fontWeight: "bold",
-    marginHorizontal: 5,
-    fontSize: 14,
-    color: "#85868dff",
-  },
-  subdatatext: {
-    color: "#3a455dff",
-    fontWeight: "bold",
-    marginTop: 4,
-    marginBottom: 5,
-    marginHorizontal: 5,
-    fontSize: 17,
   },
   greetext: {
     color: "white",
@@ -168,65 +275,25 @@ const styles = StyleSheet.create({
     marginRight: 30,
     fontSize: 70,
   },
-  datetext: {
-    justifyContent: "center",
-    fontWeight: "bold",
-    marginHorizontal: 20,
-    fontSize: 14,
-    color: "white",
-    opacity: 0.6,
-  },
-  titletext: {
-    fontWeight: "bold",
-    marginTop: 6,
-    marginHorizontal: 10,
-    fontSize: 26,
-    color: "#3a455dff",
-  },
-  subtitletext: {
-    color: "#3a455dff",
-    fontWeight: "bold",
-    marginBottom: 6,
-    marginHorizontal: 10,
-    fontSize: 20,
-    opacity: 0.8,
-  },
-  titlecard: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fbfcfeff",
-    padding: 10,
-    borderTopRightRadius: 25,
-    borderBottomRightRadius: 25,
-  },
   datacard: {
-    justifyContent: "center",
-    alignItems: "flex-start",
-    backgroundColor: "#fbfcfeff",
     margin: 10,
-    padding: 10,
-    borderRadius: 20,
-    elevation: 1,
-  },
-  imagecard: {
-    alignItems: "center",
-    width: 125,
-    height: 125,
+    padding: 15,
     backgroundColor: "white",
-    justifyContent: "center",
-    borderWidth: 2,
+    borderWidth: 1.5,
+    borderColor: "rgb(245, 245, 245)",
     borderRadius: 20,
-    borderColor: "#fbfcfeff",
   },
-  logo: {
-    width: "80%",
-    height: "80%",
-    borderRadius: 10,
-  },
-  title: {
+  datatext: {
+    marginBottom: 5,
     fontWeight: "bold",
-    fontSize: 18,
-    color: "white",
+    fontSize: 17,
+    color: "#85868dff",
+  },
+  subdatatext: {
+    marginBottom: 5,
+    color: "#3a455dff",
+    fontWeight: "bold",
+    fontSize: 24,
   },
 });
 
