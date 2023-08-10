@@ -62,7 +62,7 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "rgb(78, 219, 92)",
+    backgroundColor: "rgb(50, 191, 74)",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   lgntext: {
-    color: "rgb(78, 219, 92)",
+    color: "rgb(50, 191, 74)",
     fontWeight: "bold",
     fontSize: 21,
   },

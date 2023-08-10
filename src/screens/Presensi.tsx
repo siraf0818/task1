@@ -113,7 +113,7 @@ const Presensi = () => {
                     alignItems: "center",
                     padding: 9,
                     borderRadius: 10,
-                    backgroundColor: "rgb(78, 219, 92)",
+                    backgroundColor: "rgb(50, 191, 74)",
                   }}
                 >
                   <Icon name="briefcase" size={27} color="white" />
