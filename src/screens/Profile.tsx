@@ -78,8 +78,10 @@ const Profile = ({ navigation }) => {
             </Text>
           </View>
           <View>
-            <Text style={styles.greetext}>Hello, {data?.nama}</Text>
-            <Text style={styles.subtitletext}>{data?.jabatan}</Text>
+            <Text style={styles.greetext}>
+              Hello, {data?.nama ?? "Agyan Atma"}
+            </Text>
+            <Text style={styles.subtitletext}>{data?.jabatan ?? "Senior"}</Text>
           </View>
         </View>
       </View>
@@ -116,7 +118,7 @@ const Profile = ({ navigation }) => {
             }}
           >
             <Text style={styles.datatext}>Username</Text>
-            <Text style={styles.subdatatext}>{data?.username}</Text>
+            <Text style={styles.subdatatext}>{data?.username ?? "agyan"}</Text>
           </View>
         </View>
         <View style={styles.datacard}>
@@ -141,7 +143,9 @@ const Profile = ({ navigation }) => {
             }}
           >
             <Text style={styles.datatext}>Email</Text>
-            <Text style={styles.subdatatext}>{data?.email}</Text>
+            <Text style={styles.subdatatext}>
+              {data?.email ?? "agyan@nore.web.id"}
+            </Text>
           </View>
         </View>
         <View style={styles.datacard}>
@@ -167,7 +171,7 @@ const Profile = ({ navigation }) => {
           >
             <Text style={styles.datatext}>Tanggal Lahir</Text>
             <Text style={styles.subdatatext}>
-              {Moment(data?.tanggal_lahir).format("D MMM YYYY")}
+              {Moment(data?.tanggal_lahir ?? "1997-03-01").format("D MMM YYYY")}
             </Text>
           </View>
         </View>
@@ -193,7 +197,9 @@ const Profile = ({ navigation }) => {
             }}
           >
             <Text style={styles.datatext}>Telpon</Text>
-            <Text style={styles.subdatatext}>{data?.telp}</Text>
+            <Text style={styles.subdatatext}>
+              {data?.telp ?? "6282136147029"}
+            </Text>
           </View>
         </View>
       </View>
