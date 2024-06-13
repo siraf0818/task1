@@ -105,7 +105,7 @@ const Presensi = () => {
                 }}
               >
                 <View style={{ flex: 3, justifyContent: "flex-end" }}>
-                  <Text style={styles.subdatatext}>{hadir ?? 0} hari</Text>
+                  <Text style={styles.subdatatext}>{hadir} hari</Text>
                 </View>
                 <View
                   style={{
@@ -128,7 +128,7 @@ const Presensi = () => {
                 }}
               >
                 <View style={{ flex: 3, justifyContent: "flex-end" }}>
-                  <Text style={styles.subdatatext}>{data?.izin ?? 0} hari</Text>
+                  <Text style={styles.subdatatext}>{data?.izin} hari</Text>
                 </View>
                 <View
                   style={{
@@ -155,7 +155,7 @@ const Presensi = () => {
               >
                 <View style={{ flex: 3, justifyContent: "flex-end" }}>
                   <Text style={styles.subdatatext}>
-                    {data?.jatah_cuti ?? 0} hari
+                    {data?.jatah_cuti} hari
                   </Text>
                 </View>
                 <View
@@ -183,7 +183,7 @@ const Presensi = () => {
                 }}
               >
                 <View style={{ flex: 3, justifyContent: "flex-end" }}>
-                  <Text style={styles.subdatatext}>{wfh ?? 0} hari</Text>
+                  <Text style={styles.subdatatext}>{wfh} hari</Text>
                 </View>
                 <View
                   style={{
@@ -208,9 +208,7 @@ const Presensi = () => {
                 }}
               >
                 <View style={{ flex: 3, justifyContent: "flex-end" }}>
-                  <Text style={styles.subdatatext}>
-                    {data?.sakit ?? 0} hari
-                  </Text>
+                  <Text style={styles.subdatatext}>{data?.sakit} hari</Text>
                 </View>
                 <View
                   style={{
@@ -235,9 +233,7 @@ const Presensi = () => {
                 }}
               >
                 <View style={{ flex: 3, justifyContent: "flex-end" }}>
-                  <Text style={styles.subdatatext}>
-                    {data?.sisa_cuti ?? 0} hari
-                  </Text>
+                  <Text style={styles.subdatatext}>{data?.sisa_cuti} hari</Text>
                 </View>
                 <View
                   style={{
